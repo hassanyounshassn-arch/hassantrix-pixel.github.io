@@ -5,7 +5,7 @@
     ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.hhassn.trix",
+      "package_name": "com.reignmire.trix",
       "sha256_cert_fingerprints": [
         "14:29:D5:FE:1B:05:22:01:D9:89:AF:AC:8F:46:AF:ED:AC:EA:97:92:1C:D1:5C:86:21:65:21:EE:FD:13:72:EE",
         "CB:C0:05:A7:62:10:01:F3:D2:71:EF:40:F8:39:12:4B:74:00:66:97:6A:4F:52:D5:76:E4:12:B6:67:10:9D:CC"
