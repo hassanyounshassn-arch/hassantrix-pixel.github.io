@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta name="google-site-verification" content="V_fmdRwwBAukOKYq5Ew-vdifS4qjqrTV0GpQ-uJCzoA" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لعبة تريكس - الانضمام للغرفة</title>
@@ -133,17 +132,6 @@
             box-shadow: 0 6px 20px rgba(36, 41, 46, 0.6);
         }
         
-        .btn-drive {
-            background: linear-gradient(45deg, #4285f4, #34a853);
-            color: white;
-            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
-        }
-        
-        .btn-drive:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.6);
-        }
-        
         .btn-play {
             background: linear-gradient(45deg, #607d8b, #455a64);
             color: white;
@@ -222,38 +210,31 @@
             إذا واجهت مشكلة في فتح الروابط، تأكد من تفعيل "فتح الروابط المدعومة" من إعدادات التطبيق.
         </div>
         
-        <!-- زر فتح التطبيق مباشرة -->
         <a href="trixgame://invite" class="btn btn-primary">
             🚀 فتح لعبة تريكس
         </a>
         
-        <!-- زر الإعدادات -->
         <a href="trixgame://settings" class="btn btn-secondary">
             ⚙️ فتح إعدادات التطبيق
         </a>
         
-        <!-- قسم التحميل -->
         <div class="download-section">
             <div class="download-title">
                 📱 <strong>تحميل التطبيق</strong>
             </div>
             
-            <!-- GitHub (موصى به) -->
-            <a href="https://github.com/hassantrix-pixel/hassantrix-pixel.github.io/releases/latest/download/Trix.apk" 
-               class="btn btn-github" 
-               target="_blank"
-               style="position: relative;">
-                ⬇️ تحميل (موصى به)
-                <span class="recommended">الأفضل</span>
-            </a>
-            
-            
-            <!-- Google Play -->
             <a href="https://play.google.com/store/apps/details?id=com.reignmire.trix" 
                class="btn btn-play" 
+               target="_blank"
+               style="position: relative;">
+                🏪 تحميل من Google Play 
+                <span class="recommended">موصى به</span>
+            </a>
+            
+            <a href="https://github.com/hassantrix-pixel/hassantrix-pixel.github.io/releases/latest/download/Trix.apk" 
+               class="btn btn-github" 
                target="_blank">
-                🏪 Google Play 
-                ⬇️ تحميل (موصى به)
+                ⬇️ تحميل برابط مباشر
             </a>
         </div>
         
@@ -274,47 +255,30 @@
     </div>
     
     <script>
-        // محاولة فتح التطبيق تلقائياً بعد 3 ثواني
         setTimeout(function() {
             window.location.href = 'trixgame://invite';
         }, 3000);
         
-        // تتبع النقرات للأزرار
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 const action = this.textContent;
                 console.log('User clicked:', action);
-                
-                // إرسال إحصائيات (اختياري)
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'button_click', {
-                        'button_text': action,
-                        'page': 'invite_fallback'
-                    });
-                }
             });
         });
         
-        // التحقق مما إذا كان التطبيق مثبتاً
         function checkAppInstalled() {
             const startTime = Date.now();
             const timeout = 2500;
-            
-            // محاولة فتح التطبيق
             window.location.href = 'trixgame://invite';
             
-            // التحقق مما إذا تم فتح التطبيق
             setTimeout(function() {
                 if (Date.now() - startTime < timeout + 100) {
-                    // التطبيق لم يفتح، إظهار قسم التحميل
                     console.log('App not installed, showing download options');
                 }
             }, timeout);
         }
         
-        // بدء التحقق بعد تحميل الصفحة
         window.addEventListener('load', function() {
-            // الانتظار قليلاً قبل التحقق
             setTimeout(checkAppInstalled, 1000);
         });
     </script>
