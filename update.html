@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحديث لعبة تريكس</title>
+    <title>تحديث لعبة تريكس - Trix Update</title>
     <style>
         * {
             margin: 0;
@@ -12,8 +12,10 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             margin: 0;
             padding: 20px;
             min-height: 100vh;
@@ -22,208 +24,182 @@
             justify-content: center;
             direction: rtl;
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .container {
-            background: white;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             text-align: center;
-            max-width: 420px;
+            max-width: 450px;
             width: 100%;
-            backdrop-filter: blur(10px);
-            margin: 0 auto;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .logo-container {
             position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
         }
+
         .logo {
-            font-size: 64px;
-            margin-bottom: 25px;
-            animation: bounce 2s infinite;
+            font-size: 70px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+            animation: float 3s ease-in-out infinite;
         }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
         
         h1 {
-            color: #2c3e50;
-            margin-bottom: 25px;
-            font-size: 28px;
-            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 32px;
+            font-weight: 800;
+        }
+        
+        .version-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 18px;
+            margin: 20px 0;
+            border-right: 5px solid #4285f4;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .version-number {
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 20px;
         }
         
         .download-section {
             margin: 30px 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            gap: 15px;
         }
         
         .download-btn {
             color: white;
-            padding: 18px 35px;
+            padding: 20px 30px;
             border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 700;
             cursor: pointer;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 12px 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 100%;
-            max-width: 280px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            text-align: center;
         }
-        
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .download-btn:hover::before {
-            left: 100%;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-        
-        .download-btn:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-        
-        .github-btn {
-            background: linear-gradient(135deg, #24292e, #586069);
-            box-shadow: 0 8px 25px rgba(36, 41, 46, 0.3);
-        }
-        
-        .github-btn:hover {
-            background: linear-gradient(135deg, #586069, #24292e);
-            box-shadow: 0 12px 35px rgba(36, 41, 46, 0.4);
-        }
-        
-        .drive-btn {
-            background: linear-gradient(135deg, #4285f4, #34a853);
-            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.3);
-        }
-        
-        .drive-btn:hover {
-            background: linear-gradient(135deg, #34a853, #4285f4);
-            box-shadow: 0 12px 35px rgba(66, 133, 244, 0.4);
-        }
-        
+
+        /* ستيل جوجل بلاي - الموصى به */
         .play-btn {
-            background: linear-gradient(135deg, #607d8b, #455a64);
-            box-shadow: 0 8px 25px rgba(96, 125, 139, 0.3);
+            background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
+            background-size: 200% auto;
+            box-shadow: 0 10px 20px rgba(66, 133, 244, 0.3);
         }
-        
+
         .play-btn:hover {
-            background: linear-gradient(135deg, #455a64, #607d8b);
-            box-shadow: 0 12px 35px rgba(96, 125, 139, 0.4);
+            background-position: right center;
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(66, 133, 244, 0.4);
+        }
+
+        /* ستيل الرابط المباشر */
+        .direct-btn {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            box-shadow: 0 10px 20px rgba(44, 62, 80, 0.2);
+        }
+
+        .direct-btn:hover {
+            background: linear-gradient(135deg, #4ca1af, #2c3e50);
+            transform: scale(1.03);
         }
         
-        .version-info {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 25px 0;
-            border: 1px solid #dee2e6;
-            position: relative;
-        }
-        
-        .version-info::before {
-            content: '';
+        .recommended-badge {
+            background: #ffeb3b;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 800;
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            border-radius: 15px;
-            z-index: -1;
-            opacity: 0.3;
+            top: -10px;
+            right: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.8; }
         }
         
-        .recommended {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: bold;
+        .footer-note {
+            margin-top: 25px;
+            color: #5f6368;
+            font-size: 14px;
+            line-height: 1.6;
+            background: rgba(0,0,0,0.03);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .icon {
             margin-left: 10px;
-            display: inline-block;
-            animation: pulse 2s infinite;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            z-index: 10;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 25px rgba(255, 107, 107, 0.6);
-            }
-            100% {
-                box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            }
+            font-size: 22px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">🎮</div>
-        <h1>تحديث لعبة تريكس</h1>
+        <div class="logo-container">
+            <div class="logo">🃏</div>
+        </div>
+        <h1>تحديث تريكس الجديد</h1>
         
         <div class="version-info">
-            <h3>📱 الإصدار الجديد: 10.8.1</h3>
-            <p>✨ ميزات جديدة وإصلاحات هامة</p>
+            <p>رقم الإصدار: <span class="version-number">10.8.1</span></p>
+            <p style="color: #666; margin-top: 5px;">تحديث أمني وتحسينات في الأداء</p>
         </div>
         
         <div class="download-section">
-            <a href="https://github.com/hassantrix-pixel/hassantrix-pixel.github.io/releases/latest/download/Trix.apk" 
-               class="download-btn github-btn" 
-               target="_blank">
-                <span class="recommended"></span>
-                ⬇️ تحديث الآن
-            </a>
-          
-            
             <a href="https://play.google.com/store/apps/details?id=com.reignmire.trix" 
                class="download-btn play-btn" 
                target="_blank">
-                🏪 الأفضل  من Google Play
+                <span class="recommended-badge">موصى به ⭐</span>
+                <span class="icon">🏪</span>
+                تحديث من Google Play
+            </a>
+          
+            <a href="https://github.com/hassantrix-pixel/hassantrix-pixel.github.io/releases/latest/download/Trix.apk" 
+               class="download-btn direct-btn" 
+               target="_blank">
+                <span class="icon">🚀</span>
+                تحميل برابط مباشر (APK)
             </a>
         </div>
         
-        <p style="margin-top: 30px; color: #666; font-size: 14px; line-height: 1.6;">
-            <strong>💡 ملاحظة:</strong> التحميل من GitHub هو الخيار الأفضل والأسرع<br>
-            شكراً لاستخدامك لعبة تريكس! 🎯
-        </p>
+        <div class="footer-note">
+            <strong>💡 نصيحة:</strong> يفضل التحديث من المتجر لضمان الحصول على الميزات التلقائية وحماية بياناتك.
+            <br>
+            <span style="display: block; margin-top: 10px; font-weight: bold; color: #1a237e;">REIGNMIRE LLC © 2026</span>
+        </div>
     </div>
 </body>
 </html>
